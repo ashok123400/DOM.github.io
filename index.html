@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+    body{
+        border:2px;
+        border-style: dashed;
+        border-color:red;
+        display:inline-block;
+        padding:5px;
+        align-items: center;
+        text-align:center;
+    background-color: hsl(0, 0%, 95%);
+    }
+    </style>
+</head>
+<body>
+    <p>DOM Tree</p>
+    <button id="color">change the tagname color</button>
+    <div id="fruit">GAMES</div>
+    <br>
+    <button onclick="changeElement()">Change the element</button>
+    <br>
+    <button onclick="changeContent()">Change the content</button>
+    <br>
+    <input id="input">
+    <button onclick="add()">ADD</button>
+    <ul id="list">
+        <li>subway surfers
+            <button onclick="deleteitem(event)">DELETE</button>
+        </li>
+    </ul>
+    <script>
+        var ul=document.getElementById("list");
+        var input=document.getElementById("input");
+        var div=document.getElementById("fruit");
+        var mine=document.getElementsByTagName("p")[0];
+        var button=document.getElementById("color");
+        function color(){
+            mine.style.backgroundColor="blue";
+            mine.style.color="white";
+           mine.style.fontSize="40px";
+           mine.style.textAlign="center";
+        
+        
+        }
+        function changeElement(){
+        div.innerHTML="<h1>Games</h1>"
+        div.style.color="red";
+        div.style.fontSize="35px";
+        div.style.textAlign="center";
+        }
+        function changeContent(){
+         div.textContent="Shooting game"
+        }
+        function add(){
+            var item=document.createElement("li")
+            item.innerHTML=input.value+"<button onclick='deleteitem(event)'>DELETE</button>"
+            ul.append(item)
+        }
+        function deleteitem(event){
+            event.target.parentElement.remove()
+        }
+        button.addEventListener('click',color);
+    </script>
+</body>
+</html>
